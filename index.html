@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>froge</title>
+<meta name="description" content="a small game studio in california.">
+<link rel="canonical" href="https://frogegames.com/">
+<meta name="theme-color" content="#F2F0E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='%231C1C1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@900&family=Hanken+Grotesk:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #F2F0E9;
+    --ink: #1C1C1A;
+    --soft: #6B6A63;
+    --rule: #D9D6CC;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #161614; --ink: #EEECE5; --soft: #9C9A92; --rule: #33322E; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 17px/1.5 "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    --pb: clamp(28px, 7vh, 80px);
+    --pi: clamp(24px, 6vw, 88px);
+    padding: max(var(--pb), env(safe-area-inset-top)) max(var(--pi), env(safe-area-inset-right)) max(var(--pb), env(safe-area-inset-bottom)) max(var(--pi), env(safe-area-inset-left));
+  }
+  h1 {
+    margin: 0;
+    align-self: center;
+    font: 900 clamp(96px, 25vw, 300px)/0.82 "Zen Maru Gothic", "Hanken Grotesk", system-ui, sans-serif;
+    letter-spacing: -0.045em;
+    margin-left: -0.02em;
+  }
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px 32px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+  }
+  p { margin: 0; }
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--soft);
+    transition: text-decoration-color .2s;
+  }
+  a:hover, a:focus-visible { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 2px; }
+  .mail { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  @media (min-width: 600px) { .mail { text-align: right; } }
+  .legal { width: 100%; color: var(--soft); font-size: 13px; letter-spacing: .02em; }
+</style>
+</head>
+<body>
+<main>
+  <h1>froge</h1>
+  <footer>
+    <p>a small game studio in california.</p>
+    <ul class="mail">
+      <li><a href="mailto:molly@frogegames.com">molly@frogegames.com</a></li>
+      <li><a href="mailto:dean@frogegames.com">dean@frogegames.com</a></li>
+    </ul>
+    <p class="legal">© 2026 FROGE, LLC</p>
+  </footer>
+</main>
+</body>
+</html>
