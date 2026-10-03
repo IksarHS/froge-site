@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>froge</title>
-<meta name="description" content="a small game studio in california.">
 <link rel="canonical" href="https://frogegames.com/">
 <meta name="theme-color" content="#F2F0E9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
@@ -40,7 +39,7 @@
     min-height: 100vh;
     min-height: 100svh;
     display: grid;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr;
     --pb: clamp(28px, 7vh, 80px);
     --pi: clamp(24px, 6vw, 88px);
     padding: max(var(--pb), env(safe-area-inset-top)) max(var(--pi), env(safe-area-inset-right)) max(var(--pb), env(safe-area-inset-bottom)) max(var(--pi), env(safe-area-inset-left));
@@ -118,15 +117,6 @@
     overflow: visible;
     will-change: transform, opacity;
   }
-  footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 10px 32px;
-    padding-top: 18px;
-    border-top: 1px solid var(--rule);
-  }
   p { margin: 0; }
   a {
     color: inherit;
@@ -138,23 +128,12 @@
   }
   a:hover, a:focus-visible { text-decoration-color: currentColor; }
   a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 2px; }
-  .mail { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-  @media (min-width: 600px) { .mail { text-align: right; } }
-  .legal { width: 100%; color: var(--soft); font-size: 13px; letter-spacing: .02em; }
 </style>
 </head>
 <body>
 <div class="bursts" aria-hidden="true"></div>
 <main>
   <div class="logo" role="img" aria-label="Froge"><span class="froge-logo" aria-hidden="true"><span class="strut"></span>frog<span class="e">e</span><span class="dot"><svg class="layer layer-sea" viewBox="0 0 100 100"><path fill="#a6e3d0" transform="translate(-11 -10)" d="M42 4C60 6 96 22 97 48C98 62 80 96 50 97C28 98 2 80 3 56C4 40 22 2 42 4Z"/></svg><svg class="layer layer-orange" viewBox="0 0 100 100"><path fill="#f25c33" transform="translate(11 10)" d="M42 4C60 6 96 22 97 48C98 62 80 96 50 97C28 98 2 80 3 56C4 40 22 2 42 4Z"/></svg><svg class="layer layer-white" viewBox="0 0 100 100"><path fill="currentColor" d="M42 4C60 6 96 22 97 48C98 62 80 96 50 97C28 98 2 80 3 56C4 40 22 2 42 4Z"/></svg><span class="froge-period-hit"></span></span></span></div>
-  <footer>
-    <p>a small game studio in california.</p>
-    <ul class="mail">
-      <li><a href="mailto:molly@frogegames.com">molly@frogegames.com</a></li>
-      <li><a href="mailto:dean@frogegames.com">dean@frogegames.com</a></li>
-    </ul>
-    <p class="legal">© 2026 FROGE, LLC</p>
-  </footer>
 </main>
 <script src="froge.js"></script>
 </body>
