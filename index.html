@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@900&display=block">
 <style>
   :root {
     --paper: #F2F0E9;
@@ -44,16 +45,78 @@
     --pi: clamp(24px, 6vw, 88px);
     padding: max(var(--pb), env(safe-area-inset-top)) max(var(--pi), env(safe-area-inset-right)) max(var(--pb), env(safe-area-inset-bottom)) max(var(--pi), env(safe-area-inset-left));
   }
+  /* Hero wordmark: live text so the period can be its own draggable element.
+     Box matches the baked SVG (viewBox 15 -699 2527.12 901, 1000 units per em). */
   .logo {
+    --lw: clamp(240px, 46vw, 620px);
     align-self: center;
-    width: clamp(240px, 46vw, 620px);
-    height: auto;
+    width: var(--lw);
+    aspect-ratio: 2527.12 / 901;
+    position: relative;
     display: block;
+    font-size: calc(var(--lw) * 0.395707);
+    --logo: #1a1b1d;
   }
-  .logo-dark { display: none; }
-  @media (prefers-color-scheme: dark) {
-    .logo-light { display: none; }
-    .logo-dark { display: block; }
+  @media (prefers-color-scheme: dark) { .logo { --logo: #f2f0eb; } }
+  .froge-logo {
+    position: absolute;
+    top: 0;
+    left: -.015em;
+    font-family: "Gabarito", sans-serif;
+    font-weight: 900;
+    line-height: 0;
+    letter-spacing: -.035em;
+    font-kerning: none;
+    font-feature-settings: "kern" 0, "liga" 0;
+    color: var(--logo);
+    white-space: nowrap;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  /* zero-width strut puts the baseline .699em below the top, independent of font metrics */
+  .froge-logo .strut { display: inline-block; width: 0; height: .699em; }
+  .froge-logo .e { margin-left: -.027em; }
+  .froge-logo .dot {
+    display: inline-block;
+    position: relative;
+    width: .3em;
+    height: .3em;
+    margin-left: .02em;
+    vertical-align: -.035em;
+  }
+  .froge-logo .layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    will-change: transform;
+  }
+  .froge-period-hit {
+    position: absolute;
+    inset: -24px;
+    z-index: 20;
+    cursor: grab;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .froge-period-hit.is-dragging { cursor: grabbing; }
+  main { position: relative; z-index: 1; }
+  .bursts {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .burst {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: visible;
+    will-change: transform, opacity;
   }
   footer {
     display: flex;
@@ -81,9 +144,9 @@
 </style>
 </head>
 <body>
+<div class="bursts" aria-hidden="true"></div>
 <main>
-  <img class="logo logo-light" src="froge-logo-charcoal.svg" alt="Froge" width="2527" height="901">
-  <img class="logo logo-dark" src="froge-logo-white.svg" alt="Froge" width="2527" height="901">
+  <div class="logo" role="img" aria-label="Froge"><span class="froge-logo" aria-hidden="true"><span class="strut"></span>frog<span class="e">e</span><span class="dot"><svg class="layer layer-sea" viewBox="0 0 100 100"><path fill="#a6e3d0" transform="translate(-11 -10)" d="M42 4C60 6 96 22 97 48C98 62 80 96 50 97C28 98 2 80 3 56C4 40 22 2 42 4Z"/></svg><svg class="layer layer-orange" viewBox="0 0 100 100"><path fill="#f25c33" transform="translate(11 10)" d="M42 4C60 6 96 22 97 48C98 62 80 96 50 97C28 98 2 80 3 56C4 40 22 2 42 4Z"/></svg><svg class="layer layer-white" viewBox="0 0 100 100"><path fill="currentColor" d="M42 4C60 6 96 22 97 48C98 62 80 96 50 97C28 98 2 80 3 56C4 40 22 2 42 4Z"/></svg><span class="froge-period-hit"></span></span></span></div>
   <footer>
     <p>a small game studio in california.</p>
     <ul class="mail">
@@ -93,5 +156,6 @@
     <p class="legal">© 2026 FROGE, LLC</p>
   </footer>
 </main>
+<script src="froge.js"></script>
 </body>
 </html>
